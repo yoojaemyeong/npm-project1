@@ -1,0 +1,39 @@
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@yoojaemyeong"
+      - name: Set Git user
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@gmail.com"
+      - name: Setup Git Authentication
+        run: |
+          git remote set-url origin https://${{ secrets.YOO_PUBLISH_TOKEN }}@github.com/${{ github.repository }}.git
+      - name: Check package version
+        run: npm version patch
+      - name: Switch to main branch
+        run: git checkout main
+      - name: Push changes
+        run: git push origin main --tags
+      - run: npm install
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.YOO_PUBLISH_TOKEN }}

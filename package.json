@@ -1,0 +1,27 @@
+{
+  "name": "@yoojaemyeong/npm-project1",
+  "version": "1.0.0",
+  "description": "nodejs utils for everyone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoojaemyeong/npm-project1.git"
+  },
+  "publishConfig": {
+    "@yoojaemyeong/npm-project1": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "add",
+    "sum",
+    "hi"
+  ],
+  "author": "yoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yoojaemyeong/npm-project1/issues"
+  },
+  "homepage": "https://github.com/yoojaemyeong/npm-project1#readme"
+}
