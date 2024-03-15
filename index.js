@@ -8,6 +8,9 @@ function sum(numbers) {
     }
     return result;
 }
+function sub(a,b){
+    return a - b;
+}
 function hi(){
     console.log("Hi, everyone !!");
 }
